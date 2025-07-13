@@ -12,7 +12,9 @@ export const transacoesRouter = createTRPCRouter({
         return await db.queries.transacoes.insert(data);
       }
 
-      const data = schemas.transacao.update.parse(omit(input, ["num_transacao"]));
+      const data = schemas.transacao.update.parse(
+        omit(input, ["num_transacao"]),
+      );
 
       return await db.queries.transacoes.updateByNumero(
         input.num_transacao,
