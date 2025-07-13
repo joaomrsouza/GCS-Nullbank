@@ -26,6 +26,14 @@ jobs:
         run: bun run format:check
 
       - name: Análise de código com ESLint
+        env:
+          AUTH_SECRET: "secret123"
+          AUTH_TRUST_HOST: true
+          DB_HOST: "127.0.0.1"
+          DB_NAME: "nullbank_test"
+          DB_PASS: "nullbank123"
+          DB_USER: "nullbank"
+          DB_PORT: "3307"
         run: bun run lint
 
       - name: Verificação de tipos TypeScript
