@@ -19,10 +19,7 @@ export const contasRouter = createTRPCRouter({
 
       const data = schemas.conta.update.parse(omit(input, ["num_conta"]));
 
-      return await db.queries.contas.updateByNumero(
-        input.num_conta,
-        data,
-      );
+      return await db.queries.contas.updateByNumero(input.num_conta, data);
     }),
 
   delete: accessProcedure(["dba"])
