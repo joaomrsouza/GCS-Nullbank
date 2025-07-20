@@ -20,6 +20,9 @@ export const env = createEnv({
     DB_PASS: z.string(),
     DB_PORT: z.string().transform(v => Number(v)),
     DB_USER: z.string(),
+
+    DBA_PASS: z.string(),
+    DBA_USER: z.string(),
   },
 
   /**
@@ -49,7 +52,9 @@ export const env = createEnv({
     DB_PASS: process.env.DB_PASS,
     DB_PORT: process.env.DB_PORT,
     DB_USER: process.env.DB_USER,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+
+    DBA_PASS: process.env.DBA_PASS,
+    DBA_USER: process.env.DBA_USER,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
