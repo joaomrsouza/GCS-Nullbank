@@ -20,6 +20,9 @@ export const env = createEnv({
     DB_PASS: z.string(),
     DB_PORT: z.string().transform(v => Number(v)),
     DB_USER: z.string(),
+
+    DBA_USER: z.string(),
+    DBA_PASS: z.string()
   },
 
   /**
