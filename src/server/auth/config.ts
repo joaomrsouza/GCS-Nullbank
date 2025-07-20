@@ -68,24 +68,9 @@ export const authConfig = {
   providers: [
     Credentials({
       async authorize(credentials) {
-        console.log(JSON.stringify(credentials, null, 2));
         const { conta, login, senha } = schemas.login.form.parse(credentials);
 
         const { hash, salt } = await AuthService.hashPassword(senha);
-
-        console.log(
-          JSON.stringify(
-            { salt: salt.toString("base64"), senha: hash.toString("base64") },
-            null,
-            2,
-          ),
-        );
-        // await db.sql`
-        //   INSERT INTO funcionarios
-        //     (agencias_num_ag, nome, data_nasc, genero, endereco, cidade, cargo, salario, senha, salt)
-        //   VALUES
-        //     (1, 'João Marcos', '2001-11-12', 'masculino', 'Rua Cel. Diogo Gomes', 'Sobral', 'gerente', 8000.00, ${hash.toString("base64")}, ${salt.toString("base64")})
-        // `;
         const accessType = getAccessType(login, senha, Number(conta));
 
         const usuario = await (accessType.dba.condition()
@@ -169,7 +154,7 @@ function getAccessType(
       },
     },
     dba: {
-      condition: () => login === "Admin" && senha === "Root",
+      condition: () => login === env.DBA_USER && senha === env.DBA_PASS,
       getUser: async () => ({
         cargo: "dba",
         id: "0",
