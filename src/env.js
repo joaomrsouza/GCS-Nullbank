@@ -22,7 +22,7 @@ export const env = createEnv({
     DB_USER: z.string(),
 
     DBA_PASS: z.string(),
-    DBA_USER: z.string()
+    DBA_USER: z.string(),
   },
 
   /**
