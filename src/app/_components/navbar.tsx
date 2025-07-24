@@ -9,6 +9,7 @@ import {
 import { ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 
+import { Logo } from "@/components/icons/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { type CargoUser } from "@/server/auth/config";
 import { Permission } from "@/server/services/permission";
@@ -250,10 +251,9 @@ export async function Navbar() {
   return (
     <nav className="flex flex-row items-center justify-between border-b">
       <div className="flex items-center gap-2">
-        {/* <Link href="/" className="p-1">
-          <BrandBlackTextCompactIcon className="h-12 w-fit dark:hidden" />
-          <BrandColoredTextCompactIcon className="hidden h-12 w-fit dark:block" />
-        </Link> */}
+        <Link href="/" className="p-1">
+          <Logo className="h-12 w-fit p-2" />
+        </Link>
 
         <NavMenu menus={menus} />
       </div>
